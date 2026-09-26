@@ -1,0 +1,28 @@
+.about__placeholder {
+  margin-left: -690px;
+  margin-top: -290px;
+}
+
+.about__header {
+  text-align: left;
+  margin-left: 550px;
+  margin-top: 131px;
+}
+
+.about__statement {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.about__footer {
+  margin-left: -95px;
+  margin-top: 35px;
+}
+
+.about__header-statement {
+  margin-top: 85px;
+}
