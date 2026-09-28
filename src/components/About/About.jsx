@@ -27,7 +27,7 @@ function About({}) {
           className="about__placeholder"
         />
       </div>
-      <img src={footer} alt="Footer" className="about__footer" />
+      {/* <img src={footer} alt="Footer" className="about__footer" /> */}
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm } from "../../components/hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
@@ -16,7 +16,7 @@ const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
 
   return (
     <ModalWithForm
-      title="Log In"
+      title="Sign in"
       name="new-card"
       isOpen={isOpen}
       onClose={onClose}
@@ -32,7 +32,7 @@ const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
           name="email"
           className="modal__input"
           id="login-email"
-          placeholder="Email"
+          placeholder="Enter email"
           value={values.email}
           onChange={handleChange}
         />
@@ -44,7 +44,7 @@ const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
           name="password"
           className="modal__input"
           id="login-password"
-          placeholder="Password"
+          placeholder="Enter password"
           value={values.password}
           onChange={handleChange}
         />

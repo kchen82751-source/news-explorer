@@ -1,40 +1,40 @@
-export const searchOptions = [
-  {
-    day: true,
-    description: "nature",
-    url: new URL("../assets/nature/dog.png", import.meta.url).href,
-  },
-  {
-    day: true,
-    description: "nature",
-    url: new URL("../assets/nature/mountain-river.png", import.meta.url).href,
-  },
-  {
-    day: true,
-    description: "parks",
-    url: new URL("../assets/parks/deer.png", import.meta.url).href,
-  },
-  {
-    day: true,
-    description: "photography",
-    url: new URL("../assets/photography/night-stars.png", import.meta.url).href,
-  },
-  {
-    day: true,
-    description: "yellowstone",
-    url: new URL("../assets/yellowstone/fog.png", import.meta.url).href,
-  },
-  // {
-  //   day: false,
-  //   condition: "clear",
-  //   url: new URL("../assets/night/clear.png", import.meta.url).href,
-  // },
-  // {
-  //   day: false,
-  //   condition: "clouds",
-  //   url: new URL("../assets/night/cloudy.png", import.meta.url).href,
-  // },
-];
+// export const articleOptions = [
+//   {
+//     day: true,
+//     description: "nature",
+//     url: new URL("../assets/nature/dog.png", import.meta.url).href,
+//   },
+//   {
+//     day: true,
+//     description: "nature",
+//     url: new URL("../assets/nature/mountain-river.png", import.meta.url).href,
+//   },
+//   {
+//     day: true,
+//     description: "parks",
+//     url: new URL("../assets/parks/deer.png", import.meta.url).href,
+//   },
+//   {
+//     day: true,
+//     description: "photography",
+//     url: new URL("../assets/photography/night-stars.png", import.meta.url).href,
+//   },
+//   {
+//     day: true,
+//     description: "yellowstone",
+//     url: new URL("../assets/yellowstone/fog.png", import.meta.url).href,
+//   },
+// {
+//   day: false,
+//   condition: "clear",
+//   url: new URL("../assets/night/clear.png", import.meta.url).href,
+// },
+// {
+//   day: false,
+//   condition: "clouds",
+//   url: new URL("../assets/night/cloudy.png", import.meta.url).href,
+// },
+// ];
 
 // export const defaultSearchOption = {
 //   nature: {
@@ -54,7 +54,7 @@ export const searchOptions = [
 //   },
 // };
 
-export const defaultSearchItems = [
+export const defaultArticleItems = [
   {
     _id: 1,
     name: "Deer",

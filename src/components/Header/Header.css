@@ -155,3 +155,23 @@
 .header-top {
   margin-top: -54px;
 }
+
+.header__save {
+  background: 0 0;
+  color: rgba(182, 188, 191, 1);
+}
+
+.header__logged-out {
+  background: 0 0;
+  color: white;
+
+  background-repeat: no-repeat;
+  width: 135px;
+  border: 1px solid;
+  border-radius: 100px;
+}
+
+.header__logged-out-logo {
+  margin-bottom: -7px;
+  margin-left: 10px;
+}

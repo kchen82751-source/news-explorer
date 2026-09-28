@@ -12,3 +12,24 @@
   font-weight: 400;
   color: #212121b2;
 }
+
+.footer__bottom-icon {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__home {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 18px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.footer__logo {
+  width: 24px;
+  height: 24px;
+  margin-top: 20px;
+}

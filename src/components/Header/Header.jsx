@@ -8,6 +8,7 @@ import headerTop from "../../assets/header-top.svg";
 import { useContext } from "react";
 // import { NavLink } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import logOutButtom from "../../assets/logout.svg";
 
 // import { useLocation } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function Header({
   isLoggedIn,
   handleHomeClick,
   handleLoginClick,
+  onSignOut,
 }) {
   // const { currentUser } = useContext(CurrentUserContext);
   //   const currentDate = new Date().toLocaleString("default", {
@@ -44,14 +46,25 @@ function Header({
           <button onClick={handleHomeClick} className="header__home">
             Home
           </button>
-
-          <button onClick={handleLoginClick} className="header__signin">
-            Sign in
-            {/* <img src={ovalButton} alt="Oval Button" /> */}
-          </button>
+          {isLoggedIn ? (
+            <>
+              <button className="header__save">Saved article</button>
+              <button onClick={onSignOut} className="header__logged-out">
+                Log out
+                <img
+                  src={logOutButtom}
+                  alt="Log Out Buttom"
+                  className="header__logged-out-logo"
+                />
+              </button>
+            </>
+          ) : (
+            <button onClick={handleLoginClick} className="header__signin">
+              Sign in
+            </button>
+          )}
         </nav>
       </div>
-      <img src={headerTop} alt="Header Top" className="header-top" />
       <main style={{ padding: "2rem" }} className="header_headline-statement">
         <h1 className="header_headline">What's going on in the world?</h1>
         <p className="header_statement">

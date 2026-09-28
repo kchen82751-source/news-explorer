@@ -11,8 +11,8 @@ function Footer() {
       <div className="footer__bottom-icon">
         <p className="footer__home">Home</p>
         <p className="footer__home">TripleTen</p>
-        <img src={vector} alt="bear logo" />
-        <img src={union} alt="instagram logo" />
+        <img src={vector} alt="bear logo" className="footer__logo" />
+        <img src={union} alt="instagram logo" className="footer__logo" />
       </div>
     </footer>
   );
