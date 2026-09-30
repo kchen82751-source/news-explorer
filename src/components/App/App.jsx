@@ -14,7 +14,7 @@ import Footer from "../Footer/Footer";
 // import ItemModal from "../ItemModal/ItemModal";
 import SavedArticle from "../../components/SavedArticle/SavedArticle";
 import { getNews, filterNewsData } from "../../utils/api";
-import CurrentSearchUnitContext from "../../contexts/CurrentSeachUnitContext";
+// import CurrentSearchUnitContext from "../../contexts/CurrentSeachUnitContext";
 // import {
 //   // addItem,
 //   // getItems,
@@ -82,65 +82,74 @@ function App() {
     setisLoggedIn(false);
   };
 
+  const handleGetNews = (inputValue) => {
+    getNews(inputValue).then((data) => {
+      console.log(data);
+    });
+  };
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, isLoggedIn }}>
-      <CurrentSearchUnitContext.Provider value={{ currentSearchUnit }}>
-        <div className="app__page">
-          <div className="app__page-content">
-            {/* The global header renders here */}
-            <Header
-              // handleAddClick={handleAddClick}
-              newsData={newsData}
-              isLoggedIn={isLoggedIn}
-              // handleRegister={handleRegister}
-              handleLoginClick={handleLoginClick}
+      {/* <CurrentSearchUnitContext.Provider value={{ currentSearchUnit }}> */}
+      <div className="app__page">
+        <div className="app__page-content">
+          {/* The global header renders here */}
+          <Header
+            // handleAddClick={handleAddClick}
+            newsData={newsData}
+            isLoggedIn={isLoggedIn}
+            // handleRegister={handleRegister}
+            handleLoginClick={handleLoginClick}
+            onSignOut={handleSignOut}
+            onSearch={handleGetNews}
+            // onSubmit={handleSubmit}
+          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  newsData={newsData}
+                  // onArticleClick={onArticleClick}
+                  articleItems={articleItems}
+                  // handleBookmark={handleBookmark}
+                />
+              }
             />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Main
-                    newsData={newsData}
+
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <SavedArticle
                     // onArticleClick={onArticleClick}
                     articleItems={articleItems}
+                    // handleAddClick={handleAddClick}
+                    onSignOut={handleSignOut}
+                    // onEditPlaceholderImage={handleEditPlaceholderImage}
                     // handleBookmark={handleBookmark}
                   />
-                }
-              />
-
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute isLoggedIn={isLoggedIn}>
-                    <SavedArticle
-                      // onArticleClick={onArticleClick}
-                      articleItems={articleItems}
-                      // handleAddClick={handleAddClick}
-                      onSignOut={handleSignOut}
-                      // onEditPlaceholderImage={handleEditPlaceholderImage}
-                      // handleBookmark={handleBookmark}
-                    />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-            <About />
-            <Footer />
-          </div>
-          <RegisterModal
-            onSignUp={onSignupActiveModal}
-            isOpen={activeModal === "signup"}
-            onClose={closeActiveModal}
-            secondaryButtonAction={handleLoginClick}
-          />
-          <LoginModal
-            isOpen={activeModal === "loggedin"}
-            onSignIn={handlesignin}
-            onClose={closeActiveModal}
-            secondaryButtonAction={handleRegisterClick}
-          />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+          <About />
+          <Footer />
         </div>
-      </CurrentSearchUnitContext.Provider>
+        <RegisterModal
+          onSignUp={onSignupActiveModal}
+          isOpen={activeModal === "signup"}
+          onClose={closeActiveModal}
+          secondaryButtonAction={handleLoginClick}
+        />
+        <LoginModal
+          isOpen={activeModal === "loggedin"}
+          onSignIn={handlesignin}
+          onClose={closeActiveModal}
+          secondaryButtonAction={handleRegisterClick}
+        />
+      </div>
+      {/* </CurrentSearchUnitContext.Provider> */}
     </CurrentUserContext.Provider>
   );
 }

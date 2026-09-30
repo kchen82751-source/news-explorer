@@ -9,6 +9,7 @@ import { useContext } from "react";
 // import { NavLink } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import logOutButtom from "../../assets/logout.svg";
+import { useState } from "react";
 
 // import { useLocation } from "react-router-dom";
 
@@ -28,18 +29,26 @@ function Header({
   handleHomeClick,
   handleLoginClick,
   onSignOut,
+  onSearch,
+  searchbutton,
 }) {
+  const [query, setquery] = useState("");
   // const { currentUser } = useContext(CurrentUserContext);
   //   const currentDate = new Date().toLocaleString("default", {
   //     month: "long",
   //     day: "numeric",
   //   });
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    onSearch(query);
+  }
+
   return (
-    <header className="header_site">
-      <div className="header_logo-buttons">
-        <div className="header_logo">
-          <img src={logo} alt="NewsEplorer" className="header-img" />
+    <header className="header__site">
+      <div className="header__logo-buttons">
+        <div className="header__logo">
+          <img src={logo} alt="NewsEplorer" className="header_img" />
         </div>
 
         <nav className="header__home-signin">
@@ -71,12 +80,22 @@ function Header({
           Find the latest news on any topic and save them in your personal
           account.
         </p>
-
-        <img
-          src={searchField}
-          alt="Search Field"
-          className="header-search-field"
-        />
+        <form onSubmit={handleSubmit} className="header__search">
+          <input
+            value={query}
+            onChange={(e) => setquery(e.target.value)}
+            type="search info"
+            name="search"
+            className="header__search-field"
+            id="search-topic"
+            placeholder="Enter topic"
+            // value={values.search}
+            // onChange={handleChange}
+          />
+          <button type="submit" className="header__search-button">
+            Search
+          </button>
+        </form>
       </main>
     </header>
   );

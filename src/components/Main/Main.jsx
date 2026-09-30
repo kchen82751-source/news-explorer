@@ -5,15 +5,15 @@ import { useContext } from "react";
 // import CurrentSearchUnitContext from "../../contexts/CurrentSearchUnitContext";
 
 function Main({ searchData, onArticleClick, articleItems, handleBookmark }) {
-  const { currentSearchUnit } = useContext(CurrentSearchUnitContext);
+  // const { currentSearchUnit } = useContext(CurrentSearchUnitContext);
   return (
     <main className="main">
       <SearchForm searchData={searchData} />
       <section className="main__clothes">
-        <p className="main__description">
+        {/* <p className="main__description">
           Today is {searchData.temp[currentSearchUnit]} &deg;{" "}
           {currentSearchUnit} / You may want to wear:
-        </p>
+        </p> */}
         <ul className="main__items">
           {articleItems
             .filter((card) => {

@@ -1,0 +1,32 @@
+.search__header {
+  margin-right: 800px;
+  font-family: Roboto Slab;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: 0px;
+}
+
+.search__show-more {
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  vertical-align: middle;
+  background: 0 0;
+  background: rgba(232, 232, 232, 1);
+  color: rgba(26, 27, 34, 1);
+
+  background-repeat: no-repeat;
+  width: 176px;
+  border: 1px solid;
+  border-radius: 100px;
+}
+
+.search__header-statement {
+  background: rgba(245, 246, 247, 1);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
