@@ -2,16 +2,41 @@ import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
+const LoginModal = ({
+  onSignIn,
+  isOpen,
+  onClose,
+  secondaryButtonAction,
+  authError,
+}) => {
   const defaultValue = {
     email: "",
     password: "",
   };
   const { values, handleChange } = useForm(defaultValue);
+  const [validationError, setValidationError] = useState("");
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSignIn(values);
+    const email = values.email.trim();
+    if (!email) {
+      setValidationError("Please enter your email address.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setValidationError("Please enter a valid email address.");
+      return;
+    }
+    if (!values.password.trim()) {
+      setValidationError("Please enter your password.");
+      return;
+    }
+    if (values.password.trim().length < 8) {
+      setValidationError("Your password must be at least 8 characters.");
+      return;
+    }
+    setValidationError("");
+    onSignIn({ email, password: values.password });
   }
 
   return (
@@ -28,13 +53,17 @@ const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
       <label className="modal__label">
         Email{" "}
         <input
-          type="user info"
+          type="email"
           name="email"
           className="modal__input"
           id="login-email"
           placeholder="Enter email"
           value={values.email}
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt);
+            if (evt.target.value.trim()) setValidationError("");
+          }}
+          required
         />
       </label>
       <label className="modal__label">
@@ -46,9 +75,18 @@ const LoginModal = ({ onSignIn, isOpen, onClose, secondaryButtonAction }) => {
           id="login-password"
           placeholder="Enter password"
           value={values.password}
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt);
+            if (evt.target.value.trim()) setValidationError("");
+          }}
+          required
         />
       </label>
+      {(validationError || authError) && (
+        <p className="modal__error" role="alert">
+          {validationError || authError}
+        </p>
+      )}
     </ModalWithForm>
   );
 };

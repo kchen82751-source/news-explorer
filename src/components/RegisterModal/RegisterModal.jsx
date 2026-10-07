@@ -1,11 +1,13 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useState } from "react";
 
 const RegisterModal = ({
   onSignUp,
   isOpen,
   onClose,
   secondaryButtonAction,
+  authError,
 }) => {
   const defaultValue = {
     name: "",
@@ -14,10 +16,39 @@ const RegisterModal = ({
     avatar: "",
   };
   const { values, handleChange } = useForm(defaultValue);
+  const [validationError, setValidationError] = useState("");
+
+  function handleFieldChange(evt) {
+    handleChange(evt);
+    setValidationError("");
+  }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSignUp(values);
+    const name = values.name.trim();
+    const email = values.email.trim();
+    const password = values.password.trim();
+    const avatar = values.avatar.trim();
+
+    if (!email) return setValidationError("Please enter your email address.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return setValidationError("Please enter a valid email address.");
+    }
+    if (password.length < 8) {
+      return setValidationError("Your password must be at least 8 characters.");
+    }
+    if (!name) return setValidationError("Please enter your name.");
+    try {
+      const avatarUrl = new URL(avatar);
+      if (!avatar || !["http:", "https:"].includes(avatarUrl.protocol)) {
+        return setValidationError("Please enter a valid avatar URL.");
+      }
+    } catch {
+      return setValidationError("Please enter a valid avatar URL.");
+    }
+
+    setValidationError("");
+    onSignUp({ name, email, password, avatar });
   }
 
   return (
@@ -32,7 +63,7 @@ const RegisterModal = ({
       secondaryButtonAction={secondaryButtonAction}
     >
       <label className="modal__label">
-        Email *{" "}
+        Email{" "}
         <input
           type="email"
           name="email"
@@ -40,11 +71,12 @@ const RegisterModal = ({
           id="register-email"
           placeholder="Email"
           value={values.email}
-          onChange={handleChange}
+          onChange={handleFieldChange}
+          required
         />
       </label>
       <label className="modal__label">
-        Password *
+        Password
         <input
           type="password"
           name="password"
@@ -52,11 +84,13 @@ const RegisterModal = ({
           id="register-password"
           placeholder="Password"
           value={values.password}
-          onChange={handleChange}
+          onChange={handleFieldChange}
+          minLength={8}
+          required
         />
       </label>
       <label className="modal__label">
-        Name *
+        Username
         <input
           type="text"
           name="name"
@@ -64,21 +98,15 @@ const RegisterModal = ({
           id="register-name"
           placeholder="Name"
           value={values.name}
-          onChange={handleChange}
+          onChange={handleFieldChange}
+          required
         />
       </label>
-      <label className="modal__label">
-        Avatar URL *{" "}
-        <input
-          type="url"
-          name="avatar"
-          className="modal__input"
-          id="register-profile"
-          placeholder="Avatar"
-          value={values.avatar}
-          onChange={handleChange}
-        />
-      </label>
+      {(validationError || authError) && (
+        <p className="modal__error" role="alert">
+          {validationError || authError}
+        </p>
+      )}
     </ModalWithForm>
   );
 };

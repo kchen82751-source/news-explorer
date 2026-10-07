@@ -21,7 +21,7 @@ function ModalWithForm({
           <img src="../../assets/closebutton.svg" alt=""></img>
           <img alt="Close" src={closeIcon} />
         </button>
-        <form onSubmit={onSubmit} className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form" noValidate>
           {children}
 
           <div className="modal__log-in">

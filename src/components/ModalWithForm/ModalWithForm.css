@@ -57,6 +57,12 @@
   margin-top: 8px;
 }
 
+.modal__error {
+  margin: 0 0 16px;
+  color: #d93025;
+  font-size: 14px;
+}
+
 .modal__submit {
   border-radius: 16px;
   background: 0 0;

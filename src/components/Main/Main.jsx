@@ -1,37 +1,46 @@
 import "./Main.css";
-import SearchForm from "../SearchForm/SearchForm";
-import NewsCard from "../NewsCard/NewsCard";
-import { useContext } from "react";
-// import CurrentSearchUnitContext from "../../contexts/CurrentSearchUnitContext";
+import SearchResult from "../SearchResult/SearchResult";
+import Header from "../Header/Header";
+import About from "../../components/About/About";
 
-function Main({ searchData, onArticleClick, articleItems, handleBookmark }) {
-  // const { currentSearchUnit } = useContext(CurrentSearchUnitContext);
+function Main({
+  newsData,
+  isLoggedIn,
+  handleLoginClick,
+  handleSignOut,
+  handleGetNews,
+  handleHomeClick,
+  articles,
+  isLoading,
+  searchError,
+  hasSearched,
+  savedArticles,
+  handleSaveArticle,
+}) {
   return (
-    <main className="main">
-      <SearchForm searchData={searchData} />
-      <section className="main__clothes">
-        {/* <p className="main__description">
-          Today is {searchData.temp[currentSearchUnit]} &deg;{" "}
-          {currentSearchUnit} / You may want to wear:
-        </p> */}
-        <ul className="main__items">
-          {articleItems
-            .filter((card) => {
-              return card.search === searchData.type;
-            })
-            .map((filteredCard) => {
-              return (
-                <NewsCard
-                  key={filteredCard._id}
-                  item={filteredCard}
-                  onArticleClick={onArticleClick}
-                  handleBookmark={handleBookmark}
-                />
-              );
-            })}
-        </ul>
-      </section>
-    </main>
+    <section>
+      <main>
+        <Header
+          newsData={newsData}
+          isLoggedIn={isLoggedIn}
+          handleLoginClick={handleLoginClick}
+          onSignOut={handleSignOut}
+          onSearch={handleGetNews}
+          handleHomeClick={handleHomeClick}
+        />
+        <SearchResult
+          articles={articles}
+          hasSearched={hasSearched}
+          isLoading={isLoading}
+          error={searchError}
+          isLoggedIn={isLoggedIn}
+          savedArticles={savedArticles}
+          onSave={handleSaveArticle}
+          onLogin={handleLoginClick}
+        />
+        <About />
+      </main>
+    </section>
   );
 }
 
