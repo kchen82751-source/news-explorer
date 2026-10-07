@@ -29,6 +29,7 @@
 .savearticle__home-signin {
   display: flex;
   align-items: center;
+  align-self: stretch;
   gap: 24px;
   margin: 0;
 }
@@ -41,10 +42,18 @@
 }
 
 .savearticle__save {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding: 0 12px;
+  border-bottom: 3px solid transparent;
   background: 0 0;
   color: rgba(26, 27, 34, 1);
-
   margin-right: 26px;
+}
+
+.savearticle__save.active {
+  border-bottom-color: #1a1b22;
 }
 
 .savearticle__logged-out {
