@@ -10,3 +10,7 @@ Currently, two official plugins are available:
 ## Project Pitch Video
 
 Check out [this video](https://drive.google.com/file/d/1pzl0Nhvjj0WDxOwA19eD5JGi6rOy7jO3/view?usp=drive_link)
+
+## Project Link
+
+https://kchen82751.github.io/news-explorer/
