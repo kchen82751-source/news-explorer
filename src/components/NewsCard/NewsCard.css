@@ -46,7 +46,7 @@
   border-radius: 0 0 8px 8px;
 }
 
-.news-content h3 {
+.news-content__h3 {
   margin: 8px 0;
 }
 
@@ -88,12 +88,12 @@
   cursor: pointer;
 }
 
-.news-card__save img {
+.news-card__save__img {
   width: 24px;
   height: 24px;
 }
 
-.news-card__save svg {
+.news-card__save__svg {
   width: 22px;
   height: 22px;
   fill: none;
@@ -127,7 +127,7 @@
   display: block;
 }
 
-.news-content a {
+.news-content__a {
   display: inline-block;
   margin-top: 8px;
 }

@@ -10,7 +10,9 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 160ms ease, visibility 160ms ease;
+  transition:
+    opacity 160ms ease,
+    visibility 160ms ease;
 }
 
 .modal_opened {
@@ -64,7 +66,7 @@
   cursor: pointer;
 }
 
-.modal__close img {
+.modal__close__icon {
   display: block;
   width: 24px;
   height: 24px;
@@ -181,7 +183,8 @@
     height: 56px;
     align-items: center;
     padding: 0 20px;
-    background: url("../../assets/header-image.svg") center 42% / cover no-repeat;
+    background: url("../../assets/header-image.svg") center 42% / cover
+      no-repeat;
     color: #fff;
     font-family: "Roboto Slab", Georgia, serif;
     font-size: 16px;
@@ -209,7 +212,7 @@
     right: 16px;
   }
 
-  .modal__close img {
+  .modal__close__icon {
     filter: brightness(0);
   }
 

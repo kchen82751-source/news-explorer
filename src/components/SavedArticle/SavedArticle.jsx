@@ -23,7 +23,9 @@ export default function SavedArticle({
 
   return (
     <section>
-      <div className="savearticle__logo-buttons">
+      <div
+        className={`savearticle__logo-buttons${menuOpen ? " savearticle__logo-buttons_menu-open" : ""}`}
+      >
         <button
           type="button"
           className="savearticle__logo"

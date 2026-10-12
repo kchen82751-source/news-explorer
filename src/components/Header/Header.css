@@ -16,6 +16,10 @@
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2) inset;
 }
 
+.header__logo-buttons_menu-open {
+  background-color: #1a1b22;
+}
+
 .header__logo {
   flex: 0 0 auto;
   margin: 0;
@@ -28,6 +32,11 @@
   font-weight: 700;
   line-height: 24px;
   cursor: pointer;
+  transition: opacity 140ms ease;
+}
+
+.header__logo:hover {
+  opacity: 0.75;
 }
 
 .header__home-signin {
@@ -75,8 +84,20 @@
   border-bottom-color: #fff;
 }
 
+.header__home:hover,
+.header__save:hover {
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .header__signin {
   min-width: 204px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.header__signin:hover,
+.header__logged-out:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: #fff;
 }
 
 .header__save {
@@ -255,6 +276,10 @@
     display: flex;
   }
 
+  .header__logo-buttons_menu-open {
+    background-color: #1a1b22;
+  }
+
   .header__home,
   .header__signin,
   .header__logged-out {
@@ -275,6 +300,12 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
+  .header__home:hover,
+  .header__save:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
   .header__signin {
     min-height: 48px;
     margin-top: 16px;
@@ -282,6 +313,11 @@
     border: 1px solid #fff;
     border-radius: 100px;
     text-align: center;
+  }
+
+  .header__signin:hover,
+  .header__logged-out:hover {
+    background-color: rgba(255, 255, 255, 0.16);
   }
 
   .header__save {

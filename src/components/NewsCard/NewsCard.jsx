@@ -37,12 +37,16 @@ export default function NewsCard({
                       isSavedPage
                         ? "Delete saved article"
                         : isLoggedIn
-                        ? savedArticles.some((saved) => saved.url === article.url)
-                          ? "Remove saved article"
-                          : "Save article"
-                        : "Sign in to save articles"
+                          ? savedArticles.some(
+                              (saved) => saved.url === article.url,
+                            )
+                            ? "Remove saved article"
+                            : "Save article"
+                          : "Sign in to save articles"
                     }
-                    onClick={() => isSavedPage || isLoggedIn ? onSave(article) : onLogin?.()}
+                    onClick={() =>
+                      isSavedPage || isLoggedIn ? onSave(article) : onLogin?.()
+                    }
                   >
                     {isSavedPage ? (
                       <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -50,8 +54,14 @@ export default function NewsCard({
                       </svg>
                     ) : (
                       <img
-                        src={savedArticles.some((saved) => saved.url === article.url) ? markedIcon : bookmarkIcon}
-                        alt=""
+                        src={
+                          savedArticles.some(
+                            (saved) => saved.url === article.url,
+                          )
+                            ? markedIcon
+                            : bookmarkIcon
+                        }
+                        alt="markicon-bookmarkicon"
                       />
                     )}
                   </button>
