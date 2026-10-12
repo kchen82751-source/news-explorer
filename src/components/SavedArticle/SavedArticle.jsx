@@ -2,6 +2,7 @@ import "./SavedArticle.css";
 import { NavLink } from "react-router-dom";
 import SaveArticlelogOut from "../../assets/savearticle-logout.svg";
 import NewsCard from "../NewsCard/NewsCard";
+import { useState } from "react";
 
 export default function SavedArticle({
   articleItems = [],
@@ -10,6 +11,7 @@ export default function SavedArticle({
   onSignOut,
   isLoggedIn,
 }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const keywords = [...new Set(
     articleItems
       .flatMap((article) => [article.keyword, article.category])
@@ -30,14 +32,24 @@ export default function SavedArticle({
         >
           NewsExplorer
         </button>
-        <nav className="savearticle__home-signin">
-          <button onClick={handleHomeClick} className="savearticle__home">
+        <button
+          type="button"
+          className={`savearticle__menu-toggle${menuOpen ? " savearticle__menu-toggle_open" : ""}`}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+        </button>
+        <nav className={`savearticle__home-signin${menuOpen ? " savearticle__home-signin_open" : ""}`}>
+          <button onClick={handleHomeClick} type="button" className="savearticle__home">
             Home
           </button>
-          <NavLink to="/saved-articles" className="savearticle__save">
+          <NavLink to="/saved-articles" className="savearticle__save" onClick={() => setMenuOpen(false)}>
             Saved articles
           </NavLink>
-          <button onClick={onSignOut} className="savearticle__logged-out">
+          <button onClick={onSignOut} type="button" className="savearticle__logged-out">
             Log out
             <img
               src={SaveArticlelogOut}

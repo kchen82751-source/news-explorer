@@ -11,6 +11,28 @@ Currently, two official plugins are available:
 
 Check out [this video](https://drive.google.com/file/d/1pzl0Nhvjj0WDxOwA19eD5JGi6rOy7jO3/view?usp=drive_link)
 
-## Project Link
+# News Explorer
 
-https://kchen82751.github.io/news-explorer/
+News Explorer lets you search for news by keyword, save articles, and manage your saved list.
+
+## Live app
+
+[Open News Explorer](https://kchen82751-source.github.io/news-explorer/)
+
+The project is published from the `gh-pages` branch with GitHub Pages.
+
+## Run locally
+
+```sh
+npm install
+npm run dev
+```
+
+## Build and deploy
+
+```sh
+npm run build
+npm run deploy
+```
+
+The Vite base path and React Router basename are set for the `/news-explorer/` GitHub Pages project site.

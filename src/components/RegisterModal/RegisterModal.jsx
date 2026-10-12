@@ -28,7 +28,6 @@ const RegisterModal = ({
     const name = values.name.trim();
     const email = values.email.trim();
     const password = values.password.trim();
-    const avatar = values.avatar.trim();
 
     if (!email) return setValidationError("Please enter your email address.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -38,17 +37,8 @@ const RegisterModal = ({
       return setValidationError("Your password must be at least 8 characters.");
     }
     if (!name) return setValidationError("Please enter your name.");
-    try {
-      const avatarUrl = new URL(avatar);
-      if (!avatar || !["http:", "https:"].includes(avatarUrl.protocol)) {
-        return setValidationError("Please enter a valid avatar URL.");
-      }
-    } catch {
-      return setValidationError("Please enter a valid avatar URL.");
-    }
-
     setValidationError("");
-    onSignUp({ name, email, password, avatar });
+    onSignUp({ name, email, password, avatar: "" });
   }
 
   return (

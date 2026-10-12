@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 12px 40px;
+  padding: 12px 64px;
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2) inset;
 }
 
@@ -34,8 +34,12 @@
   display: flex;
   align-items: center;
   align-self: stretch;
-  gap: 24px;
+  gap: 32px;
   margin: 0;
+}
+
+.header__menu-toggle {
+  display: none;
 }
 
 .header__home,
@@ -158,11 +162,11 @@
 @media (max-width: 1024px) {
   .header__logo-buttons {
     min-height: 72px;
-    padding: 12px 32px;
+    padding: 12px clamp(32px, 7.2vw, 64px);
   }
 
   .header__home-signin {
-    gap: 16px;
+    gap: 24px;
   }
 
   .header_headline-statement {
@@ -186,6 +190,8 @@
   }
 
   .header__logo-buttons {
+    position: relative;
+    z-index: 5;
     min-height: 64px;
     gap: 8px;
     padding: 10px 16px;
@@ -196,25 +202,102 @@
     line-height: 20px;
   }
 
+  .header__menu-toggle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .header__menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: #fff;
+    transition: transform 160ms ease;
+  }
+
+  .header__menu-toggle_open span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .header__menu-toggle_open span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
   .header__home-signin {
-    gap: 8px;
-    font-size: 13px;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 16px 24px;
+    background: #1a1b22;
+    font-size: 18px;
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  .header__home-signin_open {
+    display: flex;
   }
 
   .header__home,
   .header__signin,
   .header__logged-out {
-    min-height: 36px;
-    padding: 6px 10px;
-    font-size: 13px;
+    width: 100%;
+    min-height: 56px;
+    margin: 0;
+    padding: 12px 0;
+    border-radius: 0;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .header__home {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .header__home_active {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .header__signin {
-    min-width: 156px;
+    min-height: 48px;
+    margin-top: 16px;
+    padding: 10px 16px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    text-align: center;
   }
 
   .header__save {
-    font-size: 13px;
+    display: flex;
+    min-height: 56px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 18px;
+  }
+
+  .header__logged-out {
+    margin-top: 16px;
+    padding: 10px 16px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    text-align: center;
   }
 
   .header__logged-out-logo {

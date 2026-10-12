@@ -1,90 +1,185 @@
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #0000004d;
+  z-index: 1000;
+  inset: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
   visibility: hidden;
+  pointer-events: none;
+  transition: opacity 160ms ease, visibility 160ms ease;
 }
 
 .modal_opened {
+  opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .modal__content {
+  position: relative;
+  box-sizing: border-box;
+  width: min(100%, 430px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  padding: 34px 36px 28px;
   border-radius: 16px;
-  background-color: white;
-  padding-top: 25px;
-  padding-left: 35px;
-  padding-right: 30px;
-  padding-bottom: 35px;
+  background: #fff;
+  color: #1a1b22;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 .modal__title {
-  margin-bottom: 25px;
-  margin-right: 352px;
-  margin-top: 10px;
+  margin: 0 0 22px;
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.modal__close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.modal__close img {
+  display: block;
+  width: 24px;
+  height: 24px;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
-  /* margin-right: 220px; */
 }
 
 .modal__label {
   display: flex;
   flex-direction: column;
-  text-align: left;
-  color: rgba(47, 113, 229, 1);
-  margin-bottom: 24px;
-  width: 107%;
-  border: none;
-
-  /* margin-top: 8px; */
+  width: 100%;
+  margin: 0 0 16px;
+  color: #2f71e5;
+  font-size: 12px;
+  line-height: 1.35;
 }
 
 .modal__input {
-  display: block;
-  margin-bottom: 24px;
-  width: 90%;
-  border: none;
-  border-bottom: 1px solid black;
-  margin-top: 8px;
-}
-
-.modal__error {
-  margin: 0 0 16px;
-  color: #d93025;
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
+  margin: 4px 0 0;
+  padding: 4px 0 8px;
+  border: 0;
+  border-bottom: 1px solid rgba(26, 27, 34, 0.2);
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: #1a1b22;
   font-size: 14px;
 }
 
-.modal__submit {
-  border-radius: 16px;
-  background: 0 0;
-  background: rgba(230, 232, 235, 1);
-  color: rgba(182, 188, 191, 1);
-  height: 64px;
-  background-repeat: no-repeat;
-  width: 358px;
-  border: 1px solid;
-  border-radius: 100px;
+.modal__input:focus {
+  border-bottom-color: #1a1b22;
 }
 
-.modal__close {
-  position: absolute;
-  top: 20px;
-  right: 10px;
-  border: none;
-  background: none;
-  margin-right: 310px;
-  margin-top: 47px;
+.modal__input::placeholder {
+  color: #8b8b8b;
+}
+
+.modal__error {
+  margin: 0 0 14px;
+  color: #d93025;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.modal__log-in {
+  margin-top: 18px;
+}
+
+.modal__submit {
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 100px;
+  background: #2f71e5;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.modal__submit:hover {
+  border-color: transparent;
+  background: #347eff;
+}
+
+.modal__log-out {
+  margin-top: 16px;
+  text-align: center;
 }
 
 .modal__second-submit {
-  background-color: white;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #2f71e5;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal__second-submit:hover {
+  border-color: transparent;
+  color: #1d55b5;
+}
+
+@media (max-width: 480px) {
+  .modal {
+    align-items: stretch;
+    padding: 0;
+    background: #fff;
+  }
+
+  .modal__content {
+    width: 100%;
+    max-height: 100dvh;
+    min-height: 100vh;
+    padding: 72px 16px 32px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .modal__title {
+    margin-bottom: 28px;
+    font-size: 24px;
+  }
+
+  .modal__close {
+    top: 20px;
+    right: 16px;
+  }
+
+  .modal__close img {
+    filter: brightness(0);
+  }
+
+  .modal__log-in {
+    margin-top: 20px;
+  }
 }

@@ -5,8 +5,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 12px 40px;
+  padding: 12px 64px;
   box-shadow: 0 -1px 0 rgba(209, 210, 214, 1) inset;
+}
+
+.savearticle__menu-toggle {
+  display: none;
 }
 
 .savearticle__logo {
@@ -30,45 +34,70 @@
   display: flex;
   align-items: center;
   align-self: stretch;
-  gap: 24px;
+  gap: 32px;
   margin: 0;
 }
 
 .savearticle__home {
-  background: 0 0;
-  color: rgba(26, 27, 34, 1);
+  align-self: stretch;
+  min-height: 56px;
+  padding: 8px 18px 12px;
+  border: 0;
+  border-bottom: 4px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: #1a1b22;
+  cursor: pointer;
+}
 
-  /* margin-right: 26px; */
+.savearticle__home:hover,
+.savearticle__home:focus-visible {
+  border-bottom-color: #1a1b22;
+}
+
+.savearticle__home:focus {
+  outline: none;
 }
 
 .savearticle__save {
   display: flex;
   align-items: center;
   align-self: stretch;
-  padding: 0 12px;
-  border-bottom: 3px solid transparent;
-  background: 0 0;
-  color: rgba(26, 27, 34, 1);
-  margin-right: 26px;
+  padding: 0;
+  border-bottom: 4px solid transparent;
+  color: #1a1b22;
+  white-space: nowrap;
 }
 
 .savearticle__save.active {
   border-bottom-color: #1a1b22;
 }
 
-.savearticle__logged-out {
-  background: 0 0;
-  color: rgba(26, 27, 34, 1);
+.savearticle__save:focus-visible {
+  outline: none;
+  border-bottom-color: #1a1b22;
+}
 
-  background-repeat: no-repeat;
-  /* width: 135px; */
-  border: 1px solid;
+.savearticle__logged-out {
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 1px solid currentColor;
   border-radius: 100px;
+  background: transparent;
+  color: #1a1b22;
+  cursor: pointer;
+}
+
+.savearticle__logged-out:hover,
+.savearticle__logged-out:focus-visible {
+  border-color: #1a1b22;
 }
 
 .savearticle__logged-out-logo {
-  margin-bottom: -7px;
+  width: 18px;
+  height: 18px;
   margin-left: 10px;
+  vertical-align: middle;
 }
 
 .savearticle__signin {
@@ -91,7 +120,9 @@
 
 .savedarticle__header-statement {
   box-sizing: border-box;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 40px;
   color: #1a1b22;
   text-align: left;
 }
@@ -122,12 +153,14 @@
 
 @media (max-width: 1024px) {
   .savearticle__logo-buttons {
+    position: relative;
+    z-index: 5;
     min-height: 72px;
-    padding: 12px 32px;
+    padding: 12px clamp(32px, 7.2vw, 64px);
   }
 
   .savearticle__home-signin {
-    gap: 16px;
+    gap: 24px;
   }
 
   .savedarticle__header-statement {
@@ -146,19 +179,98 @@
     font-size: 16px;
   }
 
+  .savearticle__menu-toggle {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 4px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .savearticle__menu-toggle span {
+    width: 24px;
+    height: 2px;
+    border-radius: 2px;
+    background: #1a1b22;
+  }
+
+  .savearticle__menu-toggle_open span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .savearticle__menu-toggle_open span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
   .savearticle__home-signin {
-    gap: 8px;
-    font-size: 13px;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 16px 24px;
+    background: #1a1b22;
+    color: #fff;
+    font-size: 18px;
+    box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  .savearticle__home-signin_open {
+    display: flex;
   }
 
   .savearticle__home,
   .savearticle__save,
   .savearticle__logged-out {
-    font-size: 13px;
+    width: 100%;
+    min-height: 56px;
+    margin: 0;
+    padding: 12px 0;
+    border-radius: 0;
+    color: #fff;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .savearticle__home,
+  .savearticle__save {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .savearticle__save.active {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .savearticle__logged-out {
+    margin-top: 16px;
+    padding: 10px 16px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    text-align: center;
+  }
+
+  .savearticle__logged-out-logo {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    vertical-align: middle;
   }
 
   .savearticle__save {
-    margin-right: 0;
+    display: flex;
+    align-items: center;
   }
 
   .savearticle__logged-out-logo {

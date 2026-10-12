@@ -13,6 +13,22 @@ function Header({
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
   const [validationError, setValidationError] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  function navigateHome() {
+    setMenuOpen(false);
+    handleHomeClick();
+  }
+
+  function openLogin() {
+    setMenuOpen(false);
+    handleLoginClick();
+  }
+
+  function signOut() {
+    setMenuOpen(false);
+    onSignOut();
+  }
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -31,25 +47,36 @@ function Header({
         <button
           type="button"
           className="header__logo"
-          onClick={handleHomeClick}
+          onClick={navigateHome}
           aria-label="NewsExplorer home"
         >
           NewsExplorer
         </button>
 
-        <nav className="header__home-signin">
+        <button
+          type="button"
+          className={`header__menu-toggle${menuOpen ? " header__menu-toggle_open" : ""}`}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+        </button>
+        <nav className={`header__home-signin${menuOpen ? " header__home-signin_open" : ""}`}>
           <button
-            onClick={handleHomeClick}
+            onClick={navigateHome}
+            type="button"
             className={`header__home${pathname === "/" ? " header__home_active" : ""}`}
           >
             Home
           </button>
           {isLoggedIn ? (
             <>
-              <NavLink to="saved-articles" className="header__save">
-                Saved article
+              <NavLink to="/saved-articles" className="header__save" onClick={() => setMenuOpen(false)}>
+                Saved articles
               </NavLink>
-              <button onClick={onSignOut} className="header__logged-out">
+              <button onClick={signOut} type="button" className="header__logged-out">
                 Log out
                 <img
                   src={logOutButtom}
@@ -59,7 +86,7 @@ function Header({
               </button>
             </>
           ) : (
-            <button onClick={handleLoginClick} className="header__signin">
+            <button onClick={openLogin} type="button" className="header__signin">
               Sign in
             </button>
           )}

@@ -12,7 +12,7 @@ export const signup = async ({ name, avatar, email, password }) => {
   validateEmail(email);
   validatePassword(password);
   if (!name?.trim()) throw new Error("Please enter your name.");
-  validateAvatar(avatar);
+  if (avatar) validateAvatar(avatar);
   return { name: name.trim(), avatar, email: email.trim() };
 };
 
