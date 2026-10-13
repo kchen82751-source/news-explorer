@@ -1,6 +1,7 @@
 import "./NewsCard.css";
 import bookmarkIcon from "../../assets/bookmarkicon.svg";
 import markedIcon from "../../assets/markedicon.svg";
+import trashIcon from "../../assets/trash.svg";
 
 export default function NewsCard({
   articles = [],
@@ -31,7 +32,7 @@ export default function NewsCard({
                 {article.source?.name && <p>{article.source.name}</p>}
                 <div className="news-card__actions">
                   <button
-                    className={`news-card__save ${!isSavedPage && !isLoggedIn ? "news-card__save_inactive" : ""}`}
+                    className={`news-card__save ${!isSavedPage && !isLoggedIn ? "news-card__save__inactive" : ""}`}
                     type="button"
                     aria-label={
                       isSavedPage
@@ -49,9 +50,11 @@ export default function NewsCard({
                     }
                   >
                     {isSavedPage ? (
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 3v7m4-7v7" />
-                      </svg>
+                      <img
+                        className="news-card__trash-icon"
+                        src={trashIcon}
+                        alt=""
+                      />
                     ) : (
                       <img
                         src={
@@ -74,7 +77,13 @@ export default function NewsCard({
               </div>
               <h3>{article.title || "Untitled article"}</h3>
               {article.publishedAt && (
-                <p>{new Date(article.publishedAt).toLocaleDateString()}</p>
+                <p>
+                  {new Intl.DateTimeFormat("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  }).format(new Date(article.publishedAt))}
+                </p>
               )}
               {article.description && <p>{article.description}</p>}
               {article.url && (

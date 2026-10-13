@@ -15,7 +15,7 @@
     visibility 160ms ease;
 }
 
-.modal_opened {
+.modal__opened {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

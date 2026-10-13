@@ -12,19 +12,21 @@ export default function SavedArticle({
   isLoggedIn,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const keywords = [...new Set(
-    articleItems
-      .flatMap((article) => [article.keyword, article.category])
-      .filter((keyword) => typeof keyword === "string" && keyword.trim())
-      .map((keyword) => keyword.trim()),
-  )];
+  const keywords = [
+    ...new Set(
+      articleItems
+        .flatMap((article) => [article.keyword, article.category])
+        .filter((keyword) => typeof keyword === "string" && keyword.trim())
+        .map((keyword) => keyword.trim()),
+    ),
+  ];
   const visibleKeywords = keywords.slice(0, 2);
   const remainingKeywordCount = keywords.length - visibleKeywords.length;
 
   return (
     <section>
       <div
-        className={`savearticle__logo-buttons${menuOpen ? " savearticle__logo-buttons_menu-open" : ""}`}
+        className={`savearticle__logo-buttons${menuOpen ? " savearticle__logo-buttons__menu-open" : ""}`}
       >
         <button
           type="button"
@@ -37,21 +39,37 @@ export default function SavedArticle({
         <button
           type="button"
           className={`savearticle__menu-toggle${menuOpen ? " savearticle__menu-toggle_open" : ""}`}
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span />
           <span />
         </button>
-        <nav className={`savearticle__home-signin${menuOpen ? " savearticle__home-signin_open" : ""}`}>
-          <button onClick={handleHomeClick} type="button" className="savearticle__home">
+        <nav
+          className={`savearticle__home-signin${menuOpen ? " savearticle__home-signin__open" : ""}`}
+        >
+          <button
+            onClick={handleHomeClick}
+            type="button"
+            className="savearticle__home"
+          >
             Home
           </button>
-          <NavLink to="/saved-articles" className="savearticle__save" onClick={() => setMenuOpen(false)}>
+          <NavLink
+            to="/saved-articles"
+            className="savearticle__save"
+            onClick={() => setMenuOpen(false)}
+          >
             Saved articles
           </NavLink>
-          <button onClick={onSignOut} type="button" className="savearticle__logged-out">
+          <button
+            onClick={onSignOut}
+            type="button"
+            className="savearticle__logged-out"
+          >
             Log out
             <img
               src={SaveArticlelogOut}

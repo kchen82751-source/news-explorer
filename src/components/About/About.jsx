@@ -3,7 +3,7 @@ import selfie from "../../assets/linkedIn-selfie.png";
 
 function About() {
   return (
-    <section>
+    <section className="about">
       <div className="about__header-statement">
         <h1 className="about__header">
           About the author

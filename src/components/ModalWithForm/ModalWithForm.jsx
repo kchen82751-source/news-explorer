@@ -21,7 +21,7 @@ function ModalWithForm({
   });
   return (
     <div
-      className={`modal${isOpen ? " modal_opened" : ""}`}
+      className={`modal${isOpen ? " modal__opened" : ""}`}
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}

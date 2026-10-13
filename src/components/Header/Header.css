@@ -1,4 +1,4 @@
-.header__site {
+.header {
   box-sizing: border-box;
   min-height: 576px;
   color: #fff;
@@ -16,7 +16,7 @@
   box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2) inset;
 }
 
-.header__logo-buttons_menu-open {
+.header__logo-buttons__menu-open {
   background-color: #1a1b22;
 }
 
@@ -80,7 +80,7 @@
   border-radius: 0;
 }
 
-.header__home_active {
+.header__home-active {
   border-bottom-color: #fff;
 }
 
@@ -91,7 +91,9 @@
 
 .header__signin {
   min-width: 204px;
-  transition: background-color 140ms ease, color 140ms ease;
+  transition:
+    background-color 140ms ease,
+    color 140ms ease;
 }
 
 .header__signin:hover,
@@ -111,13 +113,13 @@
   vertical-align: middle;
 }
 
-.header_headline-statement {
+.header__headline-statement {
   box-sizing: border-box;
   width: min(608px, calc(100% - 48px));
   margin: 72px auto 0;
 }
 
-.header_headline {
+.header__headline {
   margin: 0 0 20px;
   font-family: "Roboto Slab", Georgia, serif;
   font-size: 60px;
@@ -126,7 +128,7 @@
   text-align: left;
 }
 
-.header_statement {
+.header__statement {
   margin: 0;
   font-family: Roboto, Arial, sans-serif;
   font-size: 18px;
@@ -190,12 +192,12 @@
     gap: 24px;
   }
 
-  .header_headline-statement {
+  .header__headline-statement {
     width: min(608px, calc(100% - 64px));
     margin-top: 64px;
   }
 
-  .header_headline {
+  .header__headline {
     font-size: 48px;
   }
 
@@ -205,7 +207,7 @@
 }
 
 @media (max-width: 767px) {
-  .header__site {
+  .header {
     min-height: 560px;
     background-position: center;
   }
@@ -272,11 +274,11 @@
     box-shadow: 0 12px 18px rgba(0, 0, 0, 0.2);
   }
 
-  .header__home-signin_open {
+  .header__home-signin__open {
     display: flex;
   }
 
-  .header__logo-buttons_menu-open {
+  .header__logo-buttons__menu-open {
     background-color: #1a1b22;
   }
 
@@ -296,7 +298,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .header__home_active {
+  .header__home-active {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
@@ -342,18 +344,18 @@
     margin-left: 4px;
   }
 
-  .header_headline-statement {
+  .header__headline-statement {
     width: calc(100% - 32px);
     margin-top: 48px;
   }
 
-  .header_headline {
+  .header__headline {
     margin-bottom: 16px;
     font-size: clamp(34px, 10vw, 42px);
     line-height: 1.08;
   }
 
-  .header_statement {
+  .header__statement {
     font-size: 16px;
     line-height: 22px;
   }

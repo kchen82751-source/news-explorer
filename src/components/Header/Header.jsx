@@ -43,9 +43,9 @@ function Header({
   }
 
   return (
-    <header className="header__site">
+    <header className="header">
       <div
-        className={`header__logo-buttons${menuOpen ? " header__logo-buttons_menu-open" : ""}`}
+        className={`header__logo-buttons${menuOpen ? " header__logo-buttons__menu-open" : ""}`}
       >
         <button
           type="button"
@@ -111,9 +111,9 @@ function Header({
           )}
         </nav>
       </div>
-      <main className="header_headline-statement">
-        <h1 className="header_headline">What's going on in the world?</h1>
-        <p className="header_statement">
+      <main className="header__headline-statement">
+        <h1 className="header__headline">What's going on in the world?</h1>
+        <p className="header__statement">
           Find the latest news on any topic and save them in your personal
           account.
         </p>
