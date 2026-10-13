@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%news-explorer.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1b22" />
+    <meta name="description" content="Search, read, and save news from around the world with News Explorer." />
+    <title>News Explorer</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const redirectPath = params.get("redirect");
+      if (redirectPath) {
+        const appBase = "/news-explorer";
+        const destination = redirectPath.startsWith("/")
+          ? `${appBase}${redirectPath}`
+          : redirectPath;
+        window.history.replaceState(null, "", destination);
+      }
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

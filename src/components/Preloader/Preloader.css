@@ -1,0 +1,39 @@
+.circle-preloader {
+  box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #444;
+  border-bottom-color: #888;
+  border-radius: 50%;
+  animation: spin 0.75s infinite linear;
+}
+
+.preloader__square {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6f7;
+  width: 100%;
+  min-height: 282px;
+  gap: 16px;
+  padding: 40px 16px;
+  color: #1a1b22;
+}
+
+.preloader__square__p {
+  margin: 0;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circle-preloader {
+    animation-duration: 1.5s;
+  }
+}
